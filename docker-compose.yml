@@ -1,0 +1,11 @@
+services:
+  # ... existing app, postgres, redis, chromadb services ...
+
+  frontend:
+    build: ./customer-agent-frontend   # path apne folder structure ke hisaab se adjust karo
+    ports:
+      - "3002:3002"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5001/api/v1
+    depends_on:
+      - app
